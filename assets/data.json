@@ -1,0 +1,17 @@
+[
+    {
+        "title": "What is computer?",
+        "subtitle": "A computer is an electronic device that manipulates information, or data. It has the ability to store, retrieve, and process data.",
+        "image_url": "https://cdn.pixabay.com/photo/2020/10/21/18/07/laptop-5673901_960_720.jpg"
+    },
+    {
+        "title": "What is Flutter?",
+        "subtitle": "Flutter is an open source framework by Google for building beautiful, natively compiled, multi-platform applications from a single codebase.",
+        "image_url": "https://cdn.pixabay.com/photo/2015/04/23/22/05/hummingbird-736890_960_720.jpg"
+    },
+    {
+        "title": "What is Dart?",
+        "subtitle": "Dart is a client-optimized language for fast apps on any platform.",
+        "image_url": "https://cdn.pixabay.com/photo/2015/03/14/14/25/darts-673229_960_720.jpg"
+    }
+]

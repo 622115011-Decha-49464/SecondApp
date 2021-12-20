@@ -1,4 +1,6 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, non_constant_identifier_names, avoid_print
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, non_constant_identifier_names, avoid_print, unused_local_variable, dead_code
+
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:second/Pages/detail.dart';
@@ -17,37 +19,26 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: Colors.green,
         ),
         body: Padding(
-          padding: const EdgeInsets.all(20),
-          child: ListView(
-            children: [
-              MyBox(
-                  "What is computer?",
-                  "A computer is an electronic device that manipulates information, or data. It has the ability to store, retrieve, and process data.",
-                  "https://cdn.pixabay.com/photo/2020/10/21/18/07/laptop-5673901_960_720.jpg"),
-              SizedBox(
-                height: 20,
-              ),
-              MyBox(
-                  "What is Flutter?",
-                  "Flutter is an open source framework by Google for building beautiful, natively compiled, multi-platform applications from a single codebase.",
-                  "https://cdn.pixabay.com/photo/2015/04/23/22/05/hummingbird-736890_960_720.jpg"),
-              SizedBox(
-                height: 20,
-              ),
-              MyBox(
-                  "What is Dart?",
-                  "Dart is a client-optimized language for fast apps on any platform.",
-                  "https://cdn.pixabay.com/photo/2015/03/14/14/25/darts-673229_960_720.jpg"),
-              SizedBox(
-                height: 20,
-              )
-            ],
-          ),
-        ));
+            padding: const EdgeInsets.all(20),
+            child: FutureBuilder(
+              builder: (context, snapshot) {
+                var data = json.decode(snapshot.data.toString());
+                return ListView.builder(
+                  itemBuilder: (BuildContext context, int index) {
+                    return MyBox(data[index]['title'], data[index]['subtitle'],
+                        data[index]['image_url']);
+                  },
+                  itemCount: data.length,
+                );
+              },
+              future:
+                  DefaultAssetBundle.of(context).loadString('assets/data.json'),
+            )));
   }
 
   Widget MyBox(String title, String subtitle, String ImgLink) {
     return Container(
+      margin: EdgeInsets.only(top: 20),
       padding: EdgeInsets.all(20),
       height: 150,
       decoration: BoxDecoration(
