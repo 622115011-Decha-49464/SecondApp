@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, non_constant_identifier_names, avoid_print, unused_local_variable, dead_code
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, non_constant_identifier_names, avoid_print, unused_local_variable, dead_code, prefer_typing_uninitialized_variables
 
 import 'dart:convert';
 
@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
                 return ListView.builder(
                   itemBuilder: (BuildContext context, int index) {
                     return MyBox(data[index]['title'], data[index]['subtitle'],
-                        data[index]['image_url']);
+                        data[index]['image_url'], data[index]['detail']);
                   },
                   itemCount: data.length,
                 );
@@ -36,7 +36,12 @@ class _HomePageState extends State<HomePage> {
             )));
   }
 
-  Widget MyBox(String title, String subtitle, String ImgLink) {
+  Widget MyBox(String title, String subtitle, String ImgLink, String detail) {
+    var v1, v2, v3, v4;
+    v1 = title;
+    v2 = subtitle;
+    v3 = ImgLink;
+    v4 = detail;
     return Container(
       margin: EdgeInsets.only(top: 20),
       padding: EdgeInsets.all(20),
@@ -70,8 +75,10 @@ class _HomePageState extends State<HomePage> {
           TextButton(
               onPressed: () {
                 print("Next page >>");
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => DetailPage()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DetailPage(v1, v2, v3, v4)));
               },
               child: Text(
                 "Read more",
