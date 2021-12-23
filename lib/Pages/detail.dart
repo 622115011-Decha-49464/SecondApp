@@ -31,10 +31,18 @@ class _DetailPageState extends State<DetailPage> {
         padding: const EdgeInsets.all(8.0),
         child: ListView(
           children: [
-            Text(_v1),
-            Text(_v2),
-            Image.network(_v3),
+            Text(
+              _v1,
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+            ),
+            Text("Subtitle: " + _v2),
+            Divider(),
             Text(_v4),
+            Image.network(
+              _v3,
+              width: 400,
+              height: 400,
+            ),
           ],
         ),
       ),
